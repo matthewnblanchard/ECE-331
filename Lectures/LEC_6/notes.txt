@@ -1,0 +1,109 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 2/2/2017
+
+Questions on HW:
+        Patching
+                How to find the patch: google avrdude endpoint patch
+                cd avrdude-6.1
+                patch < endpoint... patch
+        
+        debugfs
+                stat -> blog groups
+ 
+ERE - Extended Regular Expressions
+        !CAUTION! Regular Expressions != Globbing
+        Globbing -> Filename matching (shell)
+        ERE      -> Pattern matching  (program)
+        These can happen within the same command
+        *Meta-characters are very similar, but may have different meaning
+        
+        Glob ----> |Directory Entry| ----> List of matches
+                   ^^^^^^^^^^^^^^^^^
+                          ____
+        ERE  ----------> |TEXT| ---------> List of matches
+                         ^^^^^^
+        Regular expressions are part of the C library
+        
+        In Perl, could use S/^/xyz/; 
+                S = substitue
+                Substitues xyz before the line
+
+        Meta-characters:  . ^ $ *  + ? {} [] \ | ()
+        ------------------------------------------
+        .  -> Any single character
+        ^  -> Start of line (positional)
+        $  -> End of line (postional)
+                N I K K I \0
+               ^         $
+        [] -> Character class (single character in the class)
+                [0-9], [^0-9] (not in class), etc  
+        \  -> Escape (next character is literal)
+        |  -> Alternation (OR operator, fairly low precedence)
+        () -> Grouping
+        
+        vvv Modifiers vvv
+        *  -> 0 or more
+                a* = 0 or more a's
+        +  -> 1 or more
+        ?  -> 0 or 1
+        {n,}  -> At least n times
+        {n}   -> Exactly n times 
+        {n,m} -> At least n, but no more than m times
+        ------------------------------------------
+        
+        Modifier example:
+        10
+        4
+        -8
+        3
+        29384
+        42
+        ERE --- -?[0-9]*
+                Minimum match:
+                no characters, will match a null string
+        ERE --- -?[0-9]+
+                Unintended match:
+                -0, 0000, leading 0's
+        ERE --- -?[1-9][0-9]*
+                0 fails
+        ERE --- -?[1-9][0-9]*|0
+                includes 0
+        ERE --- ^-?[1-9]$[0-9]*|^0$
+                ^ ... $ = Makes up entire line
+
+        And Dog SAID: 42 is the answer.
+                Extract the 42:              
+                '_-?[1-9][0-9]*_|_^0_'
+                _ = space
+                
+                What if the spaces where tabs?
+                        There's a special character class for whitespace
+                        \s
+                '\s(-?[1-9][0-9]*|0)\s'
+        
+        Anchors ^, $, \b \B
+        -------------------
+        ^
+        $
+        \b - word bounding
+        \B - not word bounding
+        -------------------
+
+        Classes
+        -------------------
+        \s - White space
+        \S - Not white space
+        \w - Used in words
+        \W - Not used in words
+        \d - digit
+        \D - digit
+        -------------------        
+
+        Can use REs in vim (/ to search)
+        
+        grep uses posix style [:digit:] instead of \
+                -i : case insensitive
+
+       (\\[[:alnum:]])+

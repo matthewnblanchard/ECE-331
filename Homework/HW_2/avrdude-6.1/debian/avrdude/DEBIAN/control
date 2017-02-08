@@ -1,0 +1,14 @@
+Package: avrdude
+Version: 6.1-2
+Architecture: armhf
+Maintainer: Michael Biebl <biebl@debian.org>
+Installed-Size: 962
+Depends: libc6 (>= 2.15), libelf1 (>= 0.142), libftdi1 (>= 0.20), libncurses5 (>= 5.5-5~), libreadline6 (>= 6.0), libtinfo5, libusb-0.1-4 (>= 2:0.1.12)
+Suggests: avrdude-doc
+Section: electronics
+Priority: extra
+Homepage: http://savannah.nongnu.org/projects/avrdude/
+Description: software for programming Atmel AVR microcontrollers
+ AVRDUDE is an open source utility to download/upload/manipulate the
+ ROM and EEPROM contents of AVR microcontrollers using the in-system
+ programming technique (ISP).

@@ -1,0 +1,112 @@
+# Matthew Blanchard
+# ECE 331
+# 1/31/2017
+# Lecture 5
+
+--- Sheaff's comments on HW 1 ---
+-Add more comments
+-Review C coding
+-KCS - Kernel Coding Style
+-Variables declared at top
+-Don't use only nsec in clock (not portable)
+-Use while loops when you don't know how long to run the loop
+-Use for loops when you do know how long to run the loop
+-Return 0 only if the program ran successfully
+        Use positive returns for user code (not negative)
+-Error checking is critical
+        Check return value from malloc. If it's null, you can't run the 
+                program. (Segmentation Fault)
+        Check arguments
+                argc
+                argv
+-Easy (bash script) for #3 (tmem.c)
+        #source regress
+        ./tmem 1
+        ./tmem 10
+        ./tmem 100
+        ./tmem 1000
+                .
+                .
+                .
+        ./tmem 100000000
+        
+        Load it into MatLab
+        Plot
+
+--- Lecture Notes ---
+What does NULL stand for?
+        NULL is a macro, in header files. /usr/include, /lib/gcc
+        /usr/include | grep #define 
+        NULL's definition is architecture specific, in this case it's 
+        ((void *)0)
+        
+debugfs
+        sudo debugfs mmcblk0p1 # SD card partition 2
+                BAD magic number # debugfs is expecting ext2, ext3, ext4
+                        mmcblk0p1 is NOT a ext2, ext3, ext4
+                Magic number used to find file type
+        
+        Download patch, apply patch
+
+Preview of HW 3:
+        Doing kernel drivers, need kernel source code.
+        Need at least 2GB, hours of download, prepare for compilation.
+        If compilation goes wrong, kernel source tree is destroyed,
+        must start over.
+
+Filesystems:
+        Directory Entry:
+        |Inodes| ... |Filenames|        INODE:
+        |   7  | ... |    a    |        Permissions, timestamps, group, etc
+        |   8  | ... |    b    |___
+        |   8  | ... |    c    |   \
+        |   9  | ... |    d    |   |
+        |  10  | ... |    x    |   |     
+            |                      /b
+            \______________________/
+
+        [Hard Link]
+        ln b c assigns same inode to b & c, both go the same data (linking)
+        
+        [Symbolic Link]
+        ln -s b x       In the metadata of the new inode (10), the data 
+                        is distinguished as a link 
+        
+        Cannot [Hard Link] between filesystems (partitions) 
+        (each has its own superblocks, inodes tables, etc)
+
+        For [Symbolic Links] we can link between filesystems, because
+        the files are linked via directory/filename rather than inode 
+                With [Symbolic Links], we can link to anything
+                With [Hard Links], we can link only to files.
+        
+        7 Filesystem Level Filetypes
+        ----------------------------
+        1.) Regular 
+        2.) Directories
+        3.) Character Special Devices  # Byte oriented hardware devices
+        4.) Block Special Devices      # Access devices in 'block' mode 
+        5.) FIFO                                # Memory blocks
+        6.) Links
+        7.) Sockets
+
+        * These are bits which flag your filetype (part of permissions)
+                        
+Root/Sudo:
+        Root can do anything (except kill zombies).
+        When should we be root?
+                Only when necessary
+        Things root can do:
+                -Look at other people's files
+                -Look at other people's emails
+        It's tempting to go poking around as root. Is it ethical?
+                Ethics are context sensitive
+                If we've found a user using up a lot of disk space
+                        Notify supervisor, only action to take
+                        nboysstuff.mp4
+                                Notify the police, by law (CP)
+        root/sudo <- gets logged.
+
+Next Time:
+        Perl
+        Regular Expressions 

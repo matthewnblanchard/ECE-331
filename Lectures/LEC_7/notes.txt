@@ -1,0 +1,83 @@
+# Matthew Blanchard
+# ECE 331
+# 2/7/2017
+# Lecture Notes
+
+Validation:
+        Regular expressions can't infer meaning
+        Validate: $AKSSD, bunch of number is in correct format
+        %AKSSD,1944,336,8286,7548,6581629,7487566,101444,1952,-3,4,252,2605,0,608975
+
+         ^\$AKSSD,(\d+,){2}(-?\d+,){2}(\d+,){3}(-?\d+,){4}\d+,0,-?\d+$
+        NOTE: #!/usr/bin/perl --- #! interprets as a script, uses given program
+        
+        #!/usr/bin/perl
+        while(<STDIN>) {
+                next if (/^\$AKSSD,(\d+,){2}(-?\d+,){2}(\d+,){3}(-?\d+,){4}\d+,0,-?\d+$/);
+                print;
+        }
+
+        cat valid | ./v
+        ./v < valid
+
+Perl: Calculator
+        #!/usr/bin/perl
+        print eval $_,"\n" while (<STDIN>);
+                    ^
+                    $_ = default variable STDIN goes to
+        $\="\n"; : Default string printed at the end of every line
+        Also valid:
+                #!/usr/bin/perl
+                \$="\n"
+                print eval while (<STDIN>);
+
+Perl: Number Column from 0 to argument
+        #!/usr/bin/perl
+        print "$_\n" foreach (0 .. $ARGV[0]);
+                                        ^
+                                        Perl infers the data type from context. Because this is in a range
+                                        operator, it is interpreted as a number.
+
+/usr/bin/perl -w for some warnings, -W for all warnings
+Perl interprets undeclared variables as '0', including indices out of list bounds
+
+Perl Types:
+        Scalars -> $x
+        Lists   -> @s
+        Hashes  -> %h
+
+        @s("xyz", 3, $_);
+        $s[1]
+        push @s("santos");
+
+use POSIX
+
+File I/O
+
+# Usage
+print :"UsageL dparse in_file out_file_name\n
+        .
+        .
+        .
+
+open(IN, "ARGV[0]]") or die "Cannot open $ARGV[0]\n";
+
+# Save data from FLASH
+$j=0;
+while (<IN>) {
+        next if (/^$/);
+        print RAW_$
+        print;
+        $d|$jl
+
+$i=0;
+$,=',';
+foreach (@d) {
+        chomp;
+        next if(/^$/);
+        @x=split(' ');
+        $addr=hex($x[0]);
+        if (($addr&0x000001FF) {
+
+
+Split: Remove according to delimiter

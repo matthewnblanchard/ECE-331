@@ -1,0 +1,43 @@
+@numchapentry{Introduction}{1}{Introduction}{1}
+@numsecentry{History and Credits}{1.1}{History}{2}
+@numchapentry{Command Line Options}{2}{Command Line Options}{4}
+@numsecentry{Option Descriptions}{2.1}{Option Descriptions}{4}
+@numsecentry{Programmers accepting extended parameters}{2.2}{Programmers accepting extended parameters}{14}
+@numsecentry{Example Command Line Invocations}{2.3}{Example Command Line Invocations}{17}
+@numchapentry{Terminal Mode Operation}{3}{Terminal Mode Operation}{21}
+@numsecentry{Terminal Mode Commands}{3.1}{Terminal Mode Commands}{21}
+@numsecentry{Terminal Mode Examples}{3.2}{Terminal Mode Examples}{22}
+@numchapentry{Configuration File}{4}{Configuration File}{25}
+@numsecentry{AVRDUDE Defaults}{4.1}{AVRDUDE Defaults}{25}
+@numsecentry{Programmer Definitions}{4.2}{Programmer Definitions}{25}
+@numsecentry{Part Definitions}{4.3}{Part Definitions}{26}
+@numsubsecentry{Parent Part}{4.3.1}{Parent Part}{27}
+@numsubsecentry{Instruction Format}{4.3.2}{Instruction Format}{28}
+@numsecentry{Other Notes}{4.4}{Other Notes}{28}
+@numchapentry{Programmer Specific Information}{5}{Programmer Specific Information}{30}
+@numsecentry{Atmel STK600}{5.1}{Atmel STK600}{30}
+@numsecentry{Atmel DFU bootloader using FLIP version 1}{5.2}{Atmel DFU bootloader using FLIP version 1}{33}
+@appentry{Platform Dependent Information}{A}{Platform Dependent Information}{34}
+@appsecentry{Unix}{A.1}{Unix}{34}
+@appsubsecentry{Unix Installation}{A.1.1}{Unix Installation}{34}
+@appsubsubsecentry{FreeBSD Installation}{A.1.1.1}{FreeBSD Installation}{34}
+@appsubsubsecentry{Linux Installation}{A.1.1.2}{Linux Installation}{34}
+@appsubsecentry{Unix Configuration Files}{A.1.2}{Unix Configuration Files}{35}
+@appsubsubsecentry{FreeBSD Configuration Files}{A.1.2.1}{FreeBSD Configuration Files}{35}
+@appsubsubsecentry{Linux Configuration Files}{A.1.2.2}{Linux Configuration Files}{35}
+@appsubsecentry{Unix Port Names}{A.1.3}{Unix Port Names}{35}
+@appsubsecentry{Unix Documentation}{A.1.4}{Unix Documentation}{35}
+@appsecentry{Windows}{A.2}{Windows}{35}
+@appsubsecentry{Installation}{A.2.1}{Windows Installation}{35}
+@appsubsecentry{Configuration Files}{A.2.2}{Windows Configuration Files}{36}
+@appsubsubsecentry{Configuration file names}{A.2.2.1}{Configuration file names}{36}
+@appsubsubsecentry{How AVRDUDE finds the configuration files.}{A.2.2.2}{How AVRDUDE finds the configuration files.}{36}
+@appsubsecentry{Port Names}{A.2.3}{Windows Port Names}{36}
+@appsubsubsecentry{Serial Ports}{A.2.3.1}{Serial Ports}{36}
+@appsubsubsecentry{Parallel Ports}{A.2.3.2}{Parallel Ports}{36}
+@appsubsecentry{Using the parallel port}{A.2.4}{Using the parallel port}{37}
+@appsubsubsecentry{Windows NT/2K/XP}{A.2.4.1}{Windows NT/2K/XP}{37}
+@appsubsubsecentry{Windows 95/98}{A.2.4.2}{Windows 95/98}{37}
+@appsubsecentry{Documentation}{A.2.5}{Documentation}{37}
+@appsubsecentry{Credits.}{A.2.6}{Credits.}{37}
+@appentry{Troubleshooting}{B}{Troubleshooting}{39}

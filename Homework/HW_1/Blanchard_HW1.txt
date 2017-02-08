@@ -1,0 +1,129 @@
+Matthew Blanchard
+ECE 331
+Homework #1
+Due 1/26/2017
+
+1.) Completed the vim tutorial at http://www.openvim.com/
+
+2.) I have reviewed the Kernel Coding Style document, and will conform
+to its wisdom.
+
+3.) a.) Source code:
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+        int i;
+        for (i = 1; i < argc; i++) {
+                printf("%s", argv[i]);
+                if (i < (argc - 1))
+                        printf(" ");
+        }
+        printf("\n");
+        return 0;
+}
+
+3.) b.) ./args 'Game of Thrones $eason 1 Episode 4.mp4' *'\\\\'*
+
+4.) Source code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(int argc, char *argv[])
+{
+        #define NSEC 1000000000.0
+
+        unsigned int buf_size = 0;       // Buffer size
+        char *buf_ptr = NULL;            // Pointer to buffer in memory
+        int i = 0;                       // Loop index
+        struct timespec start;           // Write start time
+        struct timespec end;             // Write end time
+
+        if (argc != 2) {
+                printf("Error: expected 1 argument, found %d\n", argc - 1);
+                return 0;
+        }
+        buf_size = atoi(argv[1]);
+        if (buf_size == 0) {
+                printf("Error: %s is not a valid memory size\n", argv[1]);
+                return 0;
+        }
+
+        buf_ptr = malloc(buf_size * sizeof(*buf_ptr));
+        if (buf_ptr == NULL) {
+                printf("Error: memory overflow\n");
+                return 0;
+        }
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        for (i = 0; i < buf_size; i++)
+                buf_ptr[i] = 42;
+        clock_gettime(CLOCK_MONOTONIC, &end);
+        free(buf_ptr);
+
+        printf("%d", buf_size);
+        printf(" %ld", (long)start.tv_sec);
+        printf(" %ld", (long)start.tv_nsec);
+        printf(" %ld", (long)end.tv_sec);
+        printf(" %ld\n", (long)end.tv_nsec);
+        return 0;
+}
+
+5.) Source code:
+
+buf_size = 1;           % Buffer size
+r_str = " ";            % Return string for a single call of memspeed
+r_val = [0 0 0 0 0];    % Results of a single call of memspeed
+r_raw = [];             % Results matrix for memspeed
+r_fin = [];             % Computed results matrix, with size/time pairs
+
+% Tabulate memory access times using memspeed
+while (r_str(1) != 'E')       % First character of error message
+        [dummy, r_str] = system(["./memspeed " num2str(buf_size)]);
+        if (r_str(1) != 'E')
+                r_val = strread(r_str, "%d");
+                r_raw = [r_raw; r_val'];
+        endif
+        buf_size *= 10;
+endwhile
+
+% Convert raw memspeed.c table to size, time pairs
+r_fin = zeros(rows(r_raw), 2);
+for i = 1:rows(r_raw);
+        r_fin(:, 1) = r_raw(:, 1);
+        r_fin(:, 2) = r_raw(:, 4) - r_raw(:, 2);
+        r_fin(:, 2) += (double(r_raw(:, 5) - r_raw(:, 3)) ./ 1e+9);
+        r_fin(:, 2) = r_fin(:, 1) ./ r_fin(:, 2);
+        r_fin(:, 2) ./= 1e+6;
+endfor
+
+% Plotting
+fig = figure();
+semilogx(r_fin(:, 1), r_fin(:,2), "marker", 'x', "linestyle", '-');
+grid("minor", "on");
+title("Memory Access Speed for Various Memory Block Sizes");
+xlabel("Memory Block Size (bytes)");
+ylabel("Memory Access Speed (Megabytes/second)");
+saveas(fig, "plot.png");
+
+6.) a.) /sys contains the files required for the user space to interface 
+with the various hardware devices connected to the system, as well as kernel
+modules. This allows processes in user space to interact with the system's 
+peripherals/hardware/kernel, such as USB ports, HDMI ports (and by extension
+attached displays), etc.
+
+6.) b.) /usr/lib contains architecture dependent object files and libraries.
+Architecture independent object files and libraries belong in usr/share. 
+Each application may only create a single subdirectory within /usr/lib, and
+must place all architecture dependent data exlusive to it within that
+directory.
+
+7.) An SSH key has been generated and associated with GitLab.
+
+8.) a) alias ll='ls -alF --color'
+8.) b) ls -a --sort extension
+8.) c.) mv x /tmp/y
+8.) d.) rm *1[0-9]* *2[0-5]*
+

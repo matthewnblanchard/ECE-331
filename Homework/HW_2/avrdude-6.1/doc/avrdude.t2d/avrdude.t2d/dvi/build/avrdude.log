@@ -1,0 +1,725 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=etex 2017.2.1)  2 FEB 2017 00:26
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input avrdude.texi
+(./avrdude.texi
+(/home/mattb/Documents/ECE_331/Homework/HW_2/avrdude-6.1/doc/texinfo.tex
+Loading texinfo [version 2013-02-01.11]:
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\outerhsize=\dimen20
+\outervsize=\dimen21
+\cornerlong=\dimen22
+\cornerthick=\dimen23
+\topandbottommargin=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks13
+\groupbox=\box18
+\groupinvalidhelp=\toks14
+\mil=\dimen25
+\exdentamount=\skip18
+\inmarginspacing=\skip19
+\centerpenalty=\count27
+ pdf,
+\tempnum=\count28
+\lnkcount=\count29
+\filename=\toks15
+\filenamelength=\count30
+\pgn=\count31
+\toksA=\toks16
+\toksB=\toks17
+\toksC=\toks18
+\toksD=\toks19
+\boxA=\box19
+\countA=\count32
+\nopdfimagehelp=\toks20
+ fonts,
+\sffam=\fam8
+\textleading=\dimen26
+ markup,
+\fontdepth=\count33
+ glyphs,
+\errorbox=\box20
+
+page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks21
+\oddheadline=\toks22
+\evenfootline=\toks23
+\oddfootline=\toks24
+ tables,
+\tableindent=\dimen27
+\itemindent=\dimen28
+\itemmargin=\dimen29
+\itemmax=\dimen30
+\itemno=\count34
+\multitableparskip=\skip22
+\multitableparindent=\skip23
+\multitablecolspace=\dimen31
+\multitablelinespace=\skip24
+\colcount=\count35
+\everytab=\toks25
+ conditionals,
+\doignorecount=\count36
+ indexing,
+\whatsitskip=\skip25
+\whatsitpenalty=\count37
+\secondaryindent=\skip26
+\partialpage=\box21
+\doublecolumnhsize=\dimen32
+ sectioning,
+\unnumberedno=\count38
+\chapno=\count39
+\secno=\count40
+\subsecno=\count41
+\subsubsecno=\count42
+\appendixno=\count43
+\absseclevel=\count44
+\secbase=\count45
+\chapheadingskip=\skip27
+\secheadingskip=\skip28
+\subsecheadingskip=\skip29
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip30
+\savepageno=\count46
+\lastnegativepageno=\count47
+\tocindent=\dimen33
+ environments,
+\lispnarrowing=\skip31
+\envskipamount=\skip32
+\circthick=\dimen34
+\cartouter=\dimen35
+\cartinner=\dimen36
+\normbskip=\skip33
+\normpskip=\skip34
+\normlskip=\skip35
+\lskip=\skip36
+\rskip=\skip37
+\nonfillparindent=\dimen37
+\tabw=\dimen38
+\verbbox=\box22
+
+defuns,
+\defbodyindent=\skip38
+\defargsindent=\skip39
+\deflastargmargin=\skip40
+\defunpenalty=\count48
+\parencount=\count49
+\brackcount=\count50
+ macros,
+\paramno=\count51
+\macname=\toks26
+ cross references,
+\auxfile=\write1
+\savesfregister=\count52
+\toprefbox=\box23
+\printedrefnamebox=\box24
+\infofilenamebox=\box25
+\printedmanualbox=\box26
+ insertions,
+\footnoteno=\count53
+\SAVEfootins=\box27
+\SAVEmargin=\box28
+\noepsfhelp=\toks27
+ localization,
+\nolanghelp=\toks28
+\countUTFx=\count54
+\countUTFy=\count55
+\countUTFz=\count56
+ formatting,
+\defaultparindent=\dimen39
+
+and turning on texinfo input format.) (./avrdude.aux)
+\openout1 = `avrdude.aux'.
+
+@cpindfile=@write2
+@fnindfile=@write3
+@vrindfile=@write4
+@tpindfile=@write5
+@kyindfile=@write6
+@pgindfile=@write7
+texinfo.tex: doing @include of version.texi
+
+
+(/home/mattb/Documents/ECE_331/Homework/HW_2/avrdude-6.1/doc/version.texi)
+[1
+\openout2 = `avrdude.cp'.
+
+\openout3 = `avrdude.fn'.
+
+\openout4 = `avrdude.vr'.
+
+\openout5 = `avrdude.tp'.
+
+\openout6 = `avrdude.ky'.
+
+\openout7 = `avrdude.pg'.
+
+] [2] (./avrdude.toc [-1]) [-2] Chapter 1
+\openout0 = `avrdude.toc'.
+
+ [1] [2] Chapter 2 [3]
+texinfo.tex: doing @include of parts.texi
+
+
+(/home/mattb/Documents/ECE_331/Homework/HW_2/avrdude-6.1/doc/parts.texi)
+[4] [5] [6] [7]
+texinfo.tex: doing @include of programmers.texi
+
+
+(/home/mattb/Documents/ECE_331/Homework/HW_2/avrdude-6.1/doc/programmers.texi)
+[8] [9] [10] [11] [12] [13] [14] [15]
+Underfull \hbox (badness 6825) in paragraph at lines 882--885
+ []@textrm After per-form-ing the port open phase, AVR-DUDE will
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.0888
+.@glue(@leftskip) 115.63242
+.@hbox(0.0+0.0)x0.0
+.@textrm A
+.@textrm f
+.@textrm t
+.etc.
+
+
+Overfull \hbox (7.06113pt too wide) in paragraph at lines 890--890
+ @texttt (AVR)[]| 
+
+@hbox(9.34993+3.85005)x79.49852
+.@glue(@leftskip) 57.81621
+.@texttt (
+.@texttt A
+.@texttt V
+.@texttt R
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--893
+ @texttt VDD Target (2) --
+
+@hbox(7.60416+2.43333)x130.08731
+.@glue(@leftskip) 12.0
+.@texttt V
+.@texttt D
+.@texttt D
+.@glue 3.65
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--893
+ @texttt possibly optional if
+
+@hbox(6.69167+2.43333)x130.08731
+.@glue(@leftskip) 12.0
+.@texttt p
+.@texttt o
+.@texttt s
+.@texttt s
+.etc.
+
+
+Overfull \hbox (1.31244pt too wide) in paragraph at lines 894--894
+ @texttt MISO[]| 
+
+@hbox(9.34993+3.85005)x79.49852
+.@glue(@leftskip) 57.81621
+.@texttt M
+.@texttt I
+.@texttt S
+.@texttt O
+.etc.
+
+
+Overfull \hbox (1.31244pt too wide) in paragraph at lines 895--895
+ @texttt SCLK[]| 
+
+@hbox(9.34993+3.85005)x79.49852
+.@glue(@leftskip) 57.81621
+.@texttt S
+.@texttt C
+.@texttt L
+.@texttt K
+.etc.
+
+[16] [17] [18] [19] Chapter 3 [20] [21] [22] Chapter 4 [23] [24] [25]
+texinfo.tex: doing @include of programmer_types.texi
+
+
+(/home/mattb/Documents/ECE_331/Homework/HW_2/avrdude-6.1/doc/programmer_types.t
+exi) [26] [27] [28] Chapter 5 [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1702--1702
+ @texttt QT600-ATTINY88-
+
+@hbox(6.69167+1.52081)x108.405
+.@glue(@leftskip) 12.0
+.@texttt Q
+.@texttt T
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1707--1707
+ @texttt QT600-ATMEGA324-
+
+@hbox(6.69167+1.52081)x108.405
+.@glue(@leftskip) 12.0
+.@texttt Q
+.@texttt T
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1708--1709
+ @textrm ATmega8 AT-mega8A AT-mega48
+
+@hbox(7.48248+2.12917)x216.81, glue set 12.86877
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm m
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1708--1709
+ @textrm AT-mega88 AT-mega168 AT-mega48P
+
+@hbox(7.48248+2.12917)x216.81, glue set 8.57065
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@discretionary
+..@textrm -
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1709--1710
+ @textrm ATmega64 AT-mega64A AT-mega128
+
+@hbox(7.48248+2.12917)x216.81, glue set 8.3665
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm m
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1712--1712
+ @texttt STK600-
+
+@hbox(6.69167+0.0)x108.405
+.@glue(@leftskip) 12.0
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1718--1719
+ @textrm AT90PWM3B AT90PWM216
+
+@hbox(7.48248+0.0)x216.81, glue set 33.84193
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 9
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1722--1722
+ @texttt STK600-
+
+@hbox(6.69167+0.0)x108.405
+.@glue(@leftskip) 12.0
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1723--1724
+ @textrm ATxmega64A1 ATxmega128A1
+
+@hbox(7.48248+2.12917)x216.81, glue set 29.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm x
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1724--1724
+ @texttt STK600-
+
+@hbox(6.69167+0.0)x108.405
+.@glue(@leftskip) 12.0
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1725--1725
+ @texttt QT600-
+
+@hbox(6.69167+1.52081)x108.405
+.@glue(@leftskip) 12.0
+.@texttt Q
+.@texttt T
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1725--1725
+ @texttt ATXMEGA128A1-
+
+@hbox(6.69167+0.0)x108.405
+.@glue(@leftskip) 12.0
+.@texttt A
+.@texttt T
+.@texttt X
+.@texttt M
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1726--1727
+ @textrm ATxmega64A3 ATxmega128A3
+
+@hbox(7.48248+2.12917)x216.81, glue set 29.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm x
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1726--1727
+ @textrm ATxmega256A3 ATxmega64D3
+
+@hbox(7.48248+2.12917)x216.81, glue set 29.80795
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm x
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1726--1727
+ @textrm ATxmega128D3 ATxmega192D3
+
+@hbox(7.48248+2.12917)x216.81, glue set 26.72461
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm x
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1728--1729
+ @textrm ATxmega32A4 ATxmega16A4
+
+@hbox(7.48248+2.12917)x216.81, glue set 32.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm x
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1730--1731
+ @textrm AT32UC3A0512 AT32UC3A0256
+
+@hbox(7.48248+0.0)x216.81, glue set 24.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1731--1731
+@texttt STK600-RCUC3A144-
+
+@hbox(6.69167+0.0)x108.405
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1731--1732
+ @textrm AT32UC3A0512 AT32UC3A0256
+
+@hbox(7.48248+0.0)x216.81, glue set 24.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1732
+@texttt STK600-RCuC3A100-
+
+@hbox(6.69167+0.0)x108.405
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1732--1733
+ @textrm AT32UC3A1512 AT32UC3A1256
+
+@hbox(7.48248+0.0)x216.81, glue set 24.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1733--1734
+ @textrm AT32UC3B0256 AT32UC3B0512RevC
+
+@hbox(7.48248+0.0)x216.81, glue set 10.8079
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1733--1734
+ @textrm AT32UC3B0512 AT32UC3B0128
+
+@hbox(7.48248+0.0)x216.81, glue set 25.39128
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1735--1735
+@texttt STK600-RCUC3A144-
+
+@hbox(6.69167+0.0)x108.405
+.@texttt S
+.@texttt T
+.@texttt K
+.@texttt 6
+.@texttt 0
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1735--1736
+ @textrm AT32UC3A3512 AT32UC3A3256
+
+@hbox(7.48248+0.0)x216.81, glue set 24.8913
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1735--1736
+ @textrm AT32UC3A3128 AT32UC3A364
+
+@hbox(7.48248+0.0)x216.81, glue set 27.89131
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1735--1736
+ @textrm AT32UC3A3256S AT32UC3A3128S
+
+@hbox(7.48248+0.0)x216.81, glue set 18.24292
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1736--1737
+ @textrm AT32UC3C0512 AT32UC3C0256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1737--1738
+ @textrm AT32UC3C1512 AT32UC3C1256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1738--1739
+ @textrm AT32UC3C2512 AT32UC3C2256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1739--1740
+ @textrm AT32UC3C0512 AT32UC3C0256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1740--1741
+ @textrm AT32UC3C1512 AT32UC3C1256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1741--1742
+ @textrm AT32UC3C2512 AT32UC3C2256
+
+@hbox(7.48248+0.0)x216.81, glue set 25.22464
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1742--1743
+ @textrm AT32UC3L064 AT32UC3L032
+
+@hbox(7.48248+0.0)x216.81, glue set 32.39131
+.@glue(@leftskip) 12.0
+.@textrm A
+.@kern-0.91252
+.@textrm T
+.@textrm 3
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1743--1743
+ @texttt QT600-AT32UC3L-
+
+@hbox(6.69167+1.52081)x108.405
+.@glue(@leftskip) 12.0
+.@texttt Q
+.@texttt T
+.@texttt 6
+.@texttt 0
+.etc.
+
+[30] [31] [32] Appendix A [33] [34] [35] [36] [37] Appendix B [38] [39]
+Overfull \hbox (25.1256pt too wide) in paragraph at lines 2396--2396
+ []@texttt avrdude -c usbtiny -p atmega8 -P usb:/dev/usb:/dev/ugen1.3 (FreeBSD 
+8+)[] 
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 50.58876
+.@hbox(0.0+0.0)x0.0
+.@texttt a
+.@texttt v
+.@texttt r
+.etc.
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 2466--2467
+ @textrm PDI[]CLK /
+
+@hbox(8.2125+2.73749)x86.72267, glue set 9.73024
+.@glue(@leftskip) 12.0
+.@textrm P
+.@textrm D
+.@textrm I
+.@kern 0.76657
+.etc.
+
+[41]
+Overfull \hbox (13.62822pt too wide) in paragraph at lines 2513--2513
+ []  @texttt desc  = "serial port banging, reset=rts sck=dtr mosi=txd miso=cts"
+;[] 
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 50.58876
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[42] [43] ) 
+Here is how much of TeX's memory you used:
+ 1845 strings out of 497120
+ 23307 string characters out of 6207303
+ 80419 words of memory out of 5000000
+ 3016 multiletter control sequences out of 15000+600000
+ 32127 words of font info for 112 fonts, out of 8000000 for 9000
+ 51 hyphenation exceptions out of 8191
+ 12i,6n,16p,270b,547s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on avrdude.dvi (47 pages, 133000 bytes).

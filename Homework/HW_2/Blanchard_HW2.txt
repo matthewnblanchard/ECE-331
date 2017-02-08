@@ -1,0 +1,162 @@
+Matthew Blanchard
+ECE 331
+HW 2
+Due 2/2/2017
+
+#1(a) apt-cache search weather-util 
+
+#1(b) sudo apt-get install weather-utili
+
+#1(c) dpkg -L weather-util
+
+#1(d) sudo apt-get purge weather-util # Purge also removes config files
+      sudo apt-get autoremove   # Removes auto installed weather-util-data
+
+#2(a) sudo apt-get source avrdude
+
+#2(b) # Couldn't find the endpoint patch for avrdude
+
+#2(c) # Couldn't apply the patch which I failed to find
+
+#2(d) sudo apt-get build-dep avrdude
+
+#2(e) sudo dpkg-source --commit
+
+#2(f) sudo dpkg-buildpackage -us -uc
+
+#2(g) sudo spkg -i avrdude_6.1-2_armhf.deb
+
+#2(h) Patch changelog below:
+Description: Added comments
+Added some comments to update.c
+ 
+ .
+ avrdude (6.1-2) unstable; urgency=medium
+ .
+   * Fix reset on FT245R. Patch cherry-picked from upstream. (Closes: #760764)
+Author: Michael Biebl <biebl@debian.org>
+Bug-Debian: https://bugs.debian.org/760764
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- avrdude-6.1.orig/update.c
++++ avrdude-6.1/update.c
+@@ -46,6 +46,8 @@ UPDATE * parse_op(char * s)
+     exit(1);
+   }
+ 
++  // Added a comment 
++
+   i = 0;
+   p = s;
+   while ((i < (sizeof(buf)-1) && *p && (*p != ':')))
+
+#3 ln /sys/var/adm/armv7/hf skywalker
+
+#4 Source code:
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[])
+{
+        int i = 0;               // Loop index
+        int blk_sum = 0;         // Running sum of blocks
+        struct stat stat_ret;    // Return struct of stat()
+        
+        // At least one argument should be present
+        if (argc < 2) {
+                printf("Error: bsum requires at least one filename passed as an argument.\n");
+                return 1;
+        }
+        
+        // Call stat() for each filename, summing the block counts and ignoring unfound files.
+        for (i = 1; i < argc; i++) {
+                if (stat(argv[i], &stat_ret) == -1)
+                        printf("File '%s' was not found. Ignoring\n", argv[i]);
+                else
+                        blk_sum += (int)stat_ret.st_blocks;
+        }
+
+        printf("%d\n", blk_sum);
+        return 0;
+}
+
+#5(a) ./bsum-glob "/usr/local/images/*.jpg"     
+      # The quotes are needed to bypass the shell doing the globbing
+
+#5(b) Source code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <glob.h>
+
+int main(int argc, char *argv[])
+{
+        int i = 0;               // Loop index
+        int blk_sum = 0;         // Running sum of blocks
+        struct stat stat_ret;    // Return struct of stat()
+        glob_t *glob_ret;        // Return struct of globi)
+
+        glob_ret = (glob_t *)malloc(sizeof(*glob_ret)); 
+        
+        // Exactly one argument should be present
+        if (argc != 2) {
+                printf("Error: bsum-glob requires exactly one glob passed as an argument.\n");
+                return 1;
+        }
+        
+        // Glob error checking
+        switch (glob(argv[1], 0, NULL, glob_ret)) {
+        case GLOB_NOSPACE:
+                printf("Error: out of memory.\n");
+                return 2;
+        case GLOB_NOMATCH:
+                printf("No files matching '%s' were found.\n", argv[1]);
+                return 3;
+        case GLOB_ABORTED:
+                printf("Encountered a read error\n");
+                break;
+        }
+        
+        // Sum block counts of all files glob() found
+        for (i = 0; i < glob_ret->gl_pathc; i++) {
+                stat(glob_ret->gl_pathv[i], &stat_ret);
+                blk_sum += (int)stat_ret.st_blocks;
+        }
+
+        globfree(glob_ret);
+        free(glob_ret);
+
+        printf("%d\n", blk_sum);
+        return 0;
+}
+
+#6(a) sudo debugfs              # Open debugfs
+      open /dev/mmcblk0p2       # Open partition (replace mmcblk0p2 with
+                                # whatever your partition is called).
+      stats                     # Lists block groups
+
+#6(b) sudo debugfs              # Open debugfs
+      open /dev/mmcblk0p2       # Open parition
+      stat /bin/ls              # Displays inode info
+
+#6(c) sudo debugfs              # Open debugfs
+      open /dev/mmcblk0p2       # Open partition
+      ncheck 11                 

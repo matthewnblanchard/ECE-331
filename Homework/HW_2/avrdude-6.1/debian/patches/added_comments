@@ -1,0 +1,34 @@
+Description: Added comments
+Added some comments to update.c
+ 
+ .
+ avrdude (6.1-2) unstable; urgency=medium
+ .
+   * Fix reset on FT245R. Patch cherry-picked from upstream. (Closes: #760764)
+Author: Michael Biebl <biebl@debian.org>
+Bug-Debian: https://bugs.debian.org/760764
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- avrdude-6.1.orig/update.c
++++ avrdude-6.1/update.c
+@@ -46,6 +46,8 @@ UPDATE * parse_op(char * s)
+     exit(1);
+   }
+ 
++  // Added a comment 
++
+   i = 0;
+   p = s;
+   while ((i < (sizeof(buf)-1) && *p && (*p != ':')))

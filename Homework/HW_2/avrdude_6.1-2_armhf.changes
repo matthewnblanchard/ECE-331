@@ -1,0 +1,33 @@
+Format: 1.8
+Date: Thu, 11 Sep 2014 21:56:06 +0200
+Source: avrdude
+Binary: avrdude avrdude-doc
+Architecture: source armhf all
+Version: 6.1-2
+Distribution: unstable
+Urgency: medium
+Maintainer: Michael Biebl <biebl@debian.org>
+Changed-By: Michael Biebl <biebl@debian.org>
+Description:
+ avrdude    - software for programming Atmel AVR microcontrollers
+ avrdude-doc - documentation for avrdude
+Closes: 760764
+Changes:
+ avrdude (6.1-2) unstable; urgency=medium
+ .
+   * Fix reset on FT245R. Patch cherry-picked from upstream. (Closes: #760764)
+Checksums-Sha1:
+ 6c8302314efdb8d56ce6623ebc3ddb3f2fcf7b0f 1164 avrdude_6.1-2.dsc
+ 80373ba7604f49f595b8880c9830b13e48d23ab9 6388 avrdude_6.1-2.debian.tar.xz
+ 0c8227001822ad8fd7a54b037c680ef6ae29a5a3 242446 avrdude_6.1-2_armhf.deb
+ 5ba0f1c2eb55d1e874abebdeb2753f7fce301e07 579520 avrdude-doc_6.1-2_all.deb
+Checksums-Sha256:
+ fec9ecaa1932264f6cc58258581313bc4f5522345c51ba13590d15fc32de4360 1164 avrdude_6.1-2.dsc
+ 7807c917b962d13fbd33bed1367c682568b1c646426d3ff3b628f95b550d13c8 6388 avrdude_6.1-2.debian.tar.xz
+ 670e87c47b293b1f4117e4157decea9ecb94b10095d5c2caf14f157fa35c492f 242446 avrdude_6.1-2_armhf.deb
+ 0e7b11d30bdc72a1d178cda2e4cdf68f883e392f275626da42cb48007d9d5725 579520 avrdude-doc_6.1-2_all.deb
+Files:
+ 0b74f823f425b3698255622a344625d3 1164 electronics extra avrdude_6.1-2.dsc
+ 2a2ef6b148b7608bac7466cd2d33f54f 6388 electronics extra avrdude_6.1-2.debian.tar.xz
+ 168d4e6dbead58e7ea018b893f8ed875 242446 electronics extra avrdude_6.1-2_armhf.deb
+ 006142cad2b7091d76fb672ba401446b 579520 doc extra avrdude-doc_6.1-2_all.deb

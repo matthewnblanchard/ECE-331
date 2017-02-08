@@ -1,0 +1,19 @@
+# Matthew Blanchard
+# ECE 331
+# Homework #3
+# Due 2/5/2017
+
+1(a): sudo apt-get update  # Retrieve updated list of packages
+      sudo apt-get upgrade # Upgrade all packagaes
+
+1(b): sudo git clone https://github.com/raspberrypi/linux.git
+
+1(c): sudo git checkout remotes/origin/rpi-4.4.y_rebase
+
+1(d): sudo mv /usr/src/linux /usr/src/linux_rpi-4.4.y_rebase
+
+1(e): make mrproper
+      modprobe configs
+      sudo cp /proc/config.gz /usr/src/linux_rpi-4.4.y_rebase/.config
+      sudo gunzip /usr/src/linux_rpi-4.4.y_rebase/.config/config.gz
+

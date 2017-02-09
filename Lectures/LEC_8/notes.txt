@@ -1,0 +1,76 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture 8
+# 2/9/2017
+
+#!/usr/bin/perl
+while (<STDIN>) {
+        print unless ( ... ) 
+}
+
+'print unless' prints if the condition is FALSE
+
+'split' converts a string into a list of separated elements
+@x=split(' '); # splits around whitespace (' ' denotes an arbitrary amount 
+               # of whitespace) and stores them in @x. By default, operates
+               # on $_
+
+'hex()' converts to hex
+'=~s/' binds s/ to a different variable than $_
+'.' concatenate
+s/(..)/chr(hex($1))/ge;
+   ^   ^     ^      ^^ Do PERL code on substitue
+   |   |     |      | Do everything on line
+   |   |     |      
+   |   |     | Convert to hex
+   |   | ASCII representation
+   | Capture two wo hex characters
+
+\r\n is windos version of \n
+'unpack()' 
+        unpack('Z11aZ10aZ11aZ7Z7 .... <1<1<1<', $gps)
+                Zn = null terminated ASCII string of n bytes
+                a = single character
+                l< = signed int_32, with endianess (< = little > = big)
+                s = signed short
+$, is automatically inserted between elements of a list
+
+man perlfunc
+        functions
+        (might need to install documentation)
+        pack/unpack
+
+man perldata
+        data-types/variable-names
+
+man perlsyn
+        syntax (if,loops,etc)
+
+man perlop
+        operators
+
+        if ($x=~/\d+/) {
+                // Run if $x contains digits
+        }
+
+        eq -> for comparing strings (similar to ==)
+
+perl var: List predefined variable
+
+a: # Counts total filesize
+
+#!/usr/bin/perl
+@f='/bin/ls -l';
+$,='|';
+$\="\n";
+foreach $l (@f) {
+        @x=split(/\s+/,$l); # split ls output by whitespace
+        $sum+=$x[4];        
+}
+printf "Total is $sum\n";
+
+/bin/ls -l | awk '(print $5)' > b  # Print size column of ls -l
+within b:
+        at bottom line:
+
+chomp: removes newlines 

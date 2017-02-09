@@ -16,9 +16,13 @@
       modprobe configs
       sudo cp /proc/config.gz /usr/src/linux_rpi-4.4.y_rebase/.config
       sudo gunzip /usr/src/linux_rpi-4.4.y_rebase/.config/config.gz
-      sudo cp /boot/Module7.symvers /usr/src/linux_rpi-4.4.y_rebase/Module.symvers
+      sudo ln -s /boot/Module7.symvers /usr/src/linux_rpi-4.4.y_rebase/Module.symvers
       sudo apt-get install bc
       sudo make modules_prepare      
+
+1(f): sudo ln -s /lib/modules/4.4.38-v7+ /usr/src/linux_rpi-4.4.y_rebase/build
+
+1(g): sudo ln -s /lib/modules/4.4.38-v7+ /usr/src/linux_rpi-4.4.y_rebase/source
 
 2(a) Minimum match is [0-9], that is any single digit.
 

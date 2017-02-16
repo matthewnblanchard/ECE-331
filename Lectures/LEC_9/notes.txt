@@ -1,0 +1,109 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture 9
+# 2/16/2017
+
+Homework notes:
+        $variable = qr/Regular Expression/;
+
+        if (/$variable1 $variable2 ... etc)
+
+More Perl:
+        # Lists files keyed with sizes, using hashes
+        @out='/bin/ls -al';
+        foreach (@out) {
+                @x=split(' ');
+                $f{$x{8}}=$x{4};
+        }
+        foreach $k (keys(%f)) {
+                print "$k $f{$k}\n";
+        }
+        
+        # A MODIFICATION: We want to save all of the file info 
+        # Lists files keyed with sizes, using hashes
+        @out='/bin/ls -al';
+        foreach (@out) {
+                @x=split(' ');
+                $f{$x{8}}=\@x;  # \@x creates a reference to the list
+        }
+        foreach $k (keys(%f)) {
+                print "$k @{$f{$k}}\n";
+
+        Use hashes when data has non-numeric parts
+
+**Exam two weeks from today**
+
+C Code:
+        Starting to think about hardware/kernel drivers
+        How to mess around with hardware in userspace
+        Use sysfs
+
+        int fd, ret;
+        char buf[4096];
+
+        fd=open("/sys/class/gpio/export",O_WRONGLY);
+        
+        sprintf(buf, "4");
+
+        # Set stdin to non blocking, so that fgets will return null
+        # if there is nothing in stdin, rather than waiting for input
+        fcntl(fileno(stdin), F_SETFL,O_NONBLOCK);
+
+        Open gpio file, select pin 4, wirte "output" to it. 
+        Close files, release pin
+        
+elinux sysfs?
+
+Makefiles: Most people on the internet do not unerstand them
+        Definitive source: man page/info pages for 'make' itself
+
+        Makefile:
+
+        TARGET=blink     # Name of exe
+        CFLAGS=-g -Wall  # Flags passed to compiler
+        OBJS=blink.o     # Object files. Make guesses compiler of 
+                         # choice from file suffix (.o)
+        LIBS=-lm         # Linked libraries (Math)
+        CC=gcc           # Use gcc compiler
+
+        # Rules
+        all: $[TARGET]
+
+        $[TARGET]:$[OBJS]  # Link together object files. Invokes 
+                           # compiler
+
+        <TAB>   # Tab indiciated with arrow
+
+        <TAB>   $[CC] -o $[TARGET] $[OBJS] $[LIBS] # Link together.
+                                        # Order is important
+         
+        clean:          # Removes stuff
+                rm -f $[TARGET] $[OBJS]
+
+        # Dive into zombie land AKA processes
+
+        Every process has a uniqure ID (PID Process ID), 1-2^16 
+        (No 0). These get reused. After a process dies, the PID 
+        gets reused 
+
+        Canno use kill command to kill process (it's alredy dead) 
+
+        Process
+        | P1   |
+        |fork()|
+        --------
+            |
+            |
+             \__Process 2
+                |        |
+                |        |
+                --_-----__ 
+
+        If child dies, it has a return value
+        In order to finish off the child: 
+        'reap' the return value from the child
+                wait... snags return value
+
+        If parent dies, child has return value, when it wants to die
+        but there is no parent to reap the return value, child
+        become a zombie

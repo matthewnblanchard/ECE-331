@@ -40,7 +40,7 @@ while (<IN>) {
         
         # Check for SSID of IGate
         # print "$receive[$i]\n"; # DEBUG
-        next unless ($receive[$i] =~ /^\w+-\d+:\//);
+        next unless ($receive[$i] =~ /^\w+(-?)\w*:\//);
 
         # Split off location,temp,speed,etc info
         @param = split /\//, $line;

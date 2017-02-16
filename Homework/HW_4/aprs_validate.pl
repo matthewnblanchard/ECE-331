@@ -1,26 +1,32 @@
 #!/usr/bin/perl
 # use strict;
-use warnings;
+# use warnings;
 
-open (my $file, '<:endcoding(UTF-8)', $ARGV[0])
+open (IN, "$ARGV[0]")
          or die "Failed to open file: '$ARGV[0]'\n";
 
-while (my $line = <$file>) {
+while (<IN>) {
+        $line = $_;
+        # print $line;    # DEBUG
         @t = split / /, $line;  # Split off Date/Time info
         
         # Check date
+        # print "$t[0]\n"; #DEBUG
         next unless ($t[0] =~ /^\d{4}-(0[1-9]|1[0-2])-([0-2]\d|3[01])$/); 
 
         # Check time
+        # print "$t[1]\n"; #DEBUG
         next unless ($t[1] =~ /^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$/);
 
         # Check timezone
+        # print "$t[2]\n"; #DEBUG
         next unless ($t[2] =~ /^\w{3}:$/);
 
         # Split off receive path info
         @receive = split /,/, $t[3];
         
         # Check for SSID of packet origin/destination
+        # print "$receive[0]\n"; #DEBUG
         next unless ($receive[0] =~ /^\w+-\d+>AP\w+$/);
 
         # Check for fields up to Q-Construct
@@ -28,16 +34,19 @@ while (my $line = <$file>) {
         $exit = 0;        # Exit flag
         until ($receive[$i++] =~ /^qA[a-zA-Z]$/) {
                 $exit = 1 unless ($receive[$i - 1] =~ /[\w*-]+$/);
+                # print "$receive[$i - 1]\n"; # DEBUG
         }       
         next if ($exit);
         
         # Check for SSID of IGate
-        next unless ($receive[$i] =~ /^\w+-\d+:\/$/);
+        # print "$receive[$i]\n"; # DEBUG
+        next unless ($receive[$i] =~ /^\w+-\d+:\//);
 
         # Split off location,temp,speed,etc info
         @param = split /\//, $line;
 
         # Check transit time & Latitude
+        # print "$param[$1]\n"; # DEBUG
         next unless ($param[1] =~ /^([01]\d|2[0-3])[0-5]\d[0-5]\d[hz]([0-8]\d|90)[0-5]\d\.\d{2}[NS]$/);
 
         # Check longitude/Object symbol/Course

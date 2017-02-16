@@ -7,6 +7,7 @@ open (IN, "$ARGV[0]")
 
 while (<IN>) {
         $line = $_;
+        # print "-----------\n"; # DEBUG
         # print $line;    # DEBUG
         @t = split / /, $line;  # Split off Date/Time info
         
@@ -50,40 +51,49 @@ while (<IN>) {
         next unless ($param[1] =~ /^([01]\d|2[0-3])[0-5]\d[0-5]\d[hz]([0-8]\d|90)[0-5]\d\.\d{2}[NS]$/);
 
         # Check longitude/Object symbol/Course
+        # print "$param[2]\n"; # DEBUG
         next unless ($param[2] =~ /^(0\d{2}|1[0-7]\d|180)[0-5]\d\.\d{2}[EW]\S\d{3}$/);
 
         # Check speed
+        # print "$param[3]\n"; # DEBUG
         next unless ($param[3] =~ /^\d{3}$/);
 
         # Check altitude (feet)
+        # print "$param[4]\n"; # DEBUG
         next unless ($param[4] =~ /^A=\d{6}((!\S{3}!)?)$/);
 
         # Grab additional fields until whitespace is hit (indicates end of line or notes)
         $i = 5;
         $exit = 0;      # Break out and exit if a field doesn't match one of the accepted formats
-        until ($param[$i++] =~ /^\S+\s\S*$/) {
+        until ($param[$i++] =~ /^\S+\s.*$/) {
                 $exit = 0;
-                next if ($param[$i - 1] =~ /^a=\d+\.\d$/);
+                # print $param[$i - 1]; # DEBUG
+                next if ($param[$i - 1] =~ /^a=\d+\.(\d?)$/);
                 next if ($param[$i - 1] =~ /^R=(-?)\d+$/);
                 next if ($param[$i - 1] =~ /^Ti=(-?)\d+$/);
                 next if ($param[$i - 1] =~ /^Te=(-?)\d+((\d+\.\d+ up \d+\.\d+ down)?)$/);
                 next if ($param[$i - 1] =~ /^V=\d+$/);
                 next if ($param[$i - 1] =~ /^T=(-?)\d+$/);
-                next if ($param[$i - 1] =~ /^t=(-?)\d+$/); 
+                next if ($param[$i - 1] =~ /^t=(-?)\d+$/);
+                next if ($param[$i - 1] =~ /^P=\d{5}$/);
+                next if ($param[$i - 1] =~ /^[XYZ]=\d+((!\S{3}!)?)$/); 
                 $exit = 1;
                 last;
         }
         next if ($exit);
 
+        # print $param[$i - 1]; # DEBUG
         # Grab last field prior to notes
         $exit = 1;
-        $exit = 0 if ($param[$i - 1] =~ /^a=\d+\.\d$/);
-        $exit = 0 if ($param[$i - 1] =~ /^R=(-?)\d+$/);
-        $exit = 0 if ($param[$i - 1] =~ /^Ti=(-?)\d+$/);
-        $exit = 0 if ($param[$i - 1] =~ /^Te=(-?)\d+((\d+\.\d+ up \d+\.\d+ down)?)$/);
-        $exit = 0 if ($param[$i - 1] =~ /^V=\d+$/);
-        $exit = 0 if ($param[$i - 1] =~ /^T=(-?)\d+$/);
-        $exit = 0 if ($param[$i - 1] =~ /^t=(-?)\d+$/); 
+        $exit = 0 if ($param[$i - 1] =~ /^a=\d+\.(\d?)\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^R=(-?)\d+\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^Ti=(-?)\d+\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^Te=(-?)\d+((\d+\.\d+ up \d+\.\d+ down)?)\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^V=\d+\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^T=(-?)\d+\s.*$/);
+        $exit = 0 if ($param[$i - 1] =~ /^t=(-?)\d+\s.*$/); 
+        $exit = 0 if ($param[$i - 1] =~ /^P=\d{5}$/);
+        $exit = 0 if ($param[$i - 1] =~ /^[XYZ]=\d+((!\S{3}!)?)$/); 
         next if ($exit);
 
         print $line;

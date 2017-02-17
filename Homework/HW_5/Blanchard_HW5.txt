@@ -1,0 +1,8 @@
+# Matthew Blanchard
+# ECE 331
+# HW 5
+# Due 2/23/2017
+
+1(a) \d\. or any single digit followed by a decimal point
+
+1(b) /(\d*\.\d+|\d+\.)([eE][-+]?\d+)?[fFlL]?|(\d+)[eE][-+]?\d+[fFlL]?/

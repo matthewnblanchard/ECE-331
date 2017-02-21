@@ -1,0 +1,112 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 2/21/2017
+
+Homework:
+        Use $1, $2, $3 to access captured parts of REs (captured by ())
+        Change extension of filename in perl:
+                $fn
+
+                $fn =~s/[^.]*$/.gpx/;
+                
+        /^ +-Wseletor        
+
+Exam: Open pi, open notes, no computer. Next thursday in class.
+        Chance extension of file in perl
+
+grep -E (egrep) # grep w/ ERE
+wc       # word count
+tail -n  # Gives last n lines of file 
+head -n  # Gives first n lines of file
+awk      # Column processort
+        awk '{Print $1}' # Split on whitespace by default, print first column
+sed -e   # Substitutes RE with SUB
+        sed -e 'S/RE/SUB/
+tar      # Tape archive - puts many files into one (archive) NOT compression
+        gzip, bz2 # Compression algorithms
+        tar -clzf hw.tar.gz ECE331/HW # Compresses ECE331/HW into hw.tar.gz
+                                      # Preserve permission
+        tar -xpf hw.tar.gz
+file     # Gives filetype (based on magic number)
+         # Magic number of Perl script is #! (first few bytes in the file)
+                # Impress your friends!
+sort     # Sorts lexically (sorts by ASCII)
+         # 1
+         # 10
+         # 2
+         # etc
+         sort -m to sort by numbers
+         sort -r to reverse
+diff     # Compare files '-' = removed, '+' = added
+         diff x y # <- points to x, >+ points to y. 
+find dir -name 'glob'
+         # Finds name matching glob in directory
+         # All kinds of options, age, size, etc
+
+grep '^0' runtimedata.txt | awk '(print $2)' | sed -re 's/^.{6}//' | perl -ne 'chomp; s/$/+/; print; | sed -e 's/$/0\n/' | bs
+         # Prints seconds column of runtimedata.txt and puts pluses between them, performs the addition
+
+perl -n  # -m causes perl to assume a loop around command
+
+module7.symvms # Snag this from GitHub raspberrpi/firmware/extra
+               # Need to get correct kernel version one
+               # Find where it fits in between the kernel versions without being too 'new'
+               # DON'T copy and paste from the web page
+               # Maybe ~4432 
+git checkout __commit ID__ for your kernel version
+               # HAVE to make sure you have the correct kernel version
+               # Source much match running version of linux
+usr/src/linux  # Check the makefile and make sure the versions match
+git log        # Get commit ID
+
+while(2) {     # Try this on your FRIEND'S computer
+        fork();
+}
+User Space: ------------ ------------- ------------ Segmentation fault allows things going wrong in one 
+            | Process 1| | Process 2 | | Process 3| process not to affect the other ones
+            ------------ ------------- ------------
+                                                    Processes use virtual memory, each shares the same
+                                                    hardware memory space
+             -------------------------
+             | Libraries: libc, libm |              One copy of the libraries in memory
+             -------------------------
+        
+             ----------------   Provides POSIX standard interface to kernel
+             | System calls |
+             ----------------
+                | | | | | 
+                V V V V V                                                       Unprivledged
+---------------Software Interrupt: Transition------------------------ --------------------
+Kernel Space:                                                                   Privledged
+        A couple of flavors: monolithic, modular, micro
+                Monolithic: everything you want is compiled into the kernel, can't change it until you 
+                        recompile the kernel
+                Modular: Can modify kernels behavior/capability at runtime. Tradeoff is speed. Modular
+                        has more overhead
+        LIB                     VFS             Dev Drivers             MM                      SCHED                   NI
+        -Make own               Virtual File    -char device, etc       Memory Management       Which process           Network Interface        
+        library in kernel       System.         talk to serial port     Keep track of memory    is running?             Protocols ...
+        space (like printk)     -ext2, vfat,    provide a uniform               |               Process get their       TCP, IP, IPX, ATM, SPX
+        -Reinvents a lot of     iso,            interfaces                      |               fair share of CPU?              |
+        libc                      |                     |                       |               User experience?                |
+                                  V                     |                       |                                               |       CAUTION !!!
+                                Block Drivers           |                       |                                               |       Corrupt SD card
+                                Uniform         Talk to Hardware                |                                               |       Full reboots
+                                interfaces for          |                       |                                               |       CHECK FOR ERRORS
+                                all of our              |                       |                                               |       HANDLE APPROPRIATELY
+                                processes               V                       V                                               V
+--------------------- ------------------------ ---------------------- --------------------- -------------- ----------------------------
+Hardware:
+
+---
+Documentation for the kernel is .... the source code. Of the kernel.
+Very nice website
+        : Linux Cross Reference
+        : www.free-electrons.com
+
+Process 0: Idle process
+        Waits for an interrupt
+
+Free book on Linux Device Drivers
+        ... it's got a picture of a horse on it?

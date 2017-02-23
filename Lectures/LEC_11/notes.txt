@@ -1,0 +1,132 @@
+
+
+Exam I: Open notes, open book, open RPi
+Thursday, week from today. Bring your Pi
+-RE
+-Perl
+-cmd line
+        -shell
+        -tool
+-shell
+-permissions
+-filesystem
+-package
+-C
+-Dir structure 
+-Makefiles
+
+-No RPI network access. Stay connected to Sheaff's network or die
+
+HW:
+Is something tying up my pin?
+        lirc on?
+        config.txt
+
+What is the kernel?
+        Resource Manager
+What are the resources?
+        Memory
+        Network
+        GPIO
+        Video
+        I2C
+Who are we managing for?
+        Processes
+        Be FAIR about it (more or less)
+
+Userspace:              P1        P2
+                         \       /
+Kernelspace:             on     off       
+                           \   /        
+Hardware:                   LED         What to do?
+
+****Concurrency!****
+        Pre-emptive
+
+X = 6 * t = 9 *2 + 42 + cos(t);
+                            ^
+                            \ Maybe t chanes during the calculation,
+                                and each t value is different in the eq
+Race Conditions:
+        Processes run the same code to modify certain hardware
+        Global vars are modified during execution, the value being used
+        becomes invalid
+        
+        Solution: Locking! First process checks if the hardware/file/etc
+                is being used. If not, place a lock. Other process cannot
+                bypass the lock until process 1 is done (and therefore
+                releases the lock)
+
+                We have to be careful. It's possible P1 could not give up
+                the lock at all! This is called a DEADLOCK. P1
+
+        Coherency: atomic variable.
+                Access memory using atomic var. As soon atomic var is 
+                accessed, all cores stop. After the atomic instructions
+                are done, all other cores must update their cache/etc
+
+        Try to mimimize locking, atomic vars have a price (efficiency)
+        Locking: try to lock as little memory as possible
+
+Need a kernel set up to do this:
+
+Need Makefile to set uop kernel modules:
+
+obj-m+= [OBJECT FILES HERE]
+
+all:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) moldules
+clean:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+Sheaff will give us framework code. Think about bigger picture
+
+Almost every include will be linux/, asm/, many libraries don't exist
+
+init_module() return 0 when the module successfully initializes
+
+#insmod MODULE.ko // Need to be root
+        loads into kernel. Calls init_module()
+#rmmod  MODULE.ko
+        when we're done with the mod. Calls cleanup_module()
+
+printk(KERN_NOTICE "...");      
+           ^
+           \ Tag for userspace no know what this is. Statements go to mem
+        KERN_DEBUG
+        KERN_EMERG
+        KERN_NOTICE
+        KERN_INFO
+
+If you have ANY warnings from compilation, you have PROBLEMS. It will BREAK.
+Need to have NO warning when you compile.
+
+sudo insmod "module"
+
+Where to messages from printk print?
+        They go to /var/log
+
+Can name init function whatever you want
+        __init "func_name"
+        module_init(func_name)
+
+static : scope is this file
+
+modinfo "module" for more info
+vermagic: has to match your running kernel to get the module loaded
+
+Resources:
+Linux Device Drivers: 3rd Edition (free pdf)
+Kernel Korner
+/usr/src/linux/drivers
+        shows all drivers linux knows about
+Looking at other code = good
+
+static var: Won't get reinitialized
+
+Get argument from cmd line
+        linux/stat.h --> MACROS
+        module_param()          // Use MACROS for permissions for portability 
+        MODULE_PARAM_DESC()
+To enter them
+        tack on var name=value to command call

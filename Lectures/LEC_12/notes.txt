@@ -53,4 +53,14 @@ Filestystem:
         System log files --> /var/log
         Man pages stored --> /usr/share/man
         C headers --> /usr/include
-         
+        
+-----------
+User space -> Kernel space
+        Interface for devices is in /dev
+        Interfaces are treated as files
+                -Open it
+                -Write/Read
+                -Close it
+        ioctl -> set settings for device (baud rate, etc)
+        How does calling write, read, open, close change device?
+                Pointers to functions 

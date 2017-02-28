@@ -1,0 +1,56 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 2/28/2017 
+
+INODE Table:
+        Split across all block groups
+        Contains file metadata
+                -Size
+                -Type
+                        -Character Special Device
+                        -Socket
+                        -Directory
+                        -Register File
+                        -Symbolic Link
+                        -FIFO
+                -Permission
+                    ->  User   Group  Other
+                    |   rwx
+                    |   Read, Write, eXecute
+                    |
+                    setuid, group, sticky bit (temp dir, globally writable)
+                -Timestamps
+                -Directory Entry
+                        -Inode #
+                        -Lengths
+                        -Filename
+        
+Block Group:
+        -Part of inode table
+        -Bitmaps
+                -USED data blocks
+                -USED inode entries
+        -Data
+        -Copy of the Super Block
+        -Block Descriptor
+
+Process 0:
+        Idle Process
+        ------------------
+        Waits for interrupt
+        Conserves power
+
+Patching
+        get patch
+        patch < xyz.patch
+
+*** NO questions on kernel in Exam I ***
+
+Filestystem:
+        -Know where things are
+        Non admin executable --> /usr/local/bin, /usr/bin
+        System log files --> /var/log
+        Man pages stored --> /usr/share/man
+        C headers --> /usr/include
+         

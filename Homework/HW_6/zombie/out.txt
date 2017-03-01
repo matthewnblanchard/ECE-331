@@ -1,0 +1,4 @@
+18737 12868 Sl+  vim zombie.c
+19954 17504 S+   ./zombie
+19955 19954 Z+   [zombie] <defunct>
+19957 13307 S+   grep --color=auto zombie

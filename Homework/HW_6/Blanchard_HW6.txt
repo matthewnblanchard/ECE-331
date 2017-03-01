@@ -3,3 +3,142 @@
 # Homework 6
 # Due 3/2/2017
 
+
+1(a): Source Code:
+
+/* Matthew Blanchard
+ * ECE 331
+ * zombie.c
+ *       A C program which creates zombies. Creates a child process, sends
+ *       a term signal, then exits after 10 seconds. Child waits in an endless loop
+ *       afterward.
+ */
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <signal.h>
+
+void child_process(void);
+
+int main()
+{
+        pid_t child;
+        
+        child = fork();
+        if (child == -1) {
+                printf("Error: Failed to create child process...\n");
+                return -1;
+        } else if (child == 0) {
+                child_process();
+                printf("The child process failed to wait.\n");
+                return -2;
+        } else {
+                printf("Child process created, PID is %d...\n", child);
+                kill(child, SIGTERM);
+                sleep(10);
+                return 0;
+        }
+}
+
+void child_process(void)
+{
+        while(1)
+                sleep(1);
+        return;
+}
+
+1(b): Makefile:
+
+TARGET=zombie
+CFLAGS=-g -Wall
+OBJS=zombie.o
+CC=gcc
+
+$(TARGET):zombie.c
+	$(CC) -c zombie.c
+	$(CC) -o $(TARGET) $(CFLAGS) $(OBJS)
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+1(c): ps -e -o pid,ppid,stat,cmd | grep zombie > out.txt
+        Contents of out.txt, shows ./zombie process and its zombie child:
+        ---
+        18737 12868 Sl+  vim zombie.c
+        19954 17504 S+   ./zombie
+        19955 19954 Z+   [zombie] <defunct>
+        19957 13307 S+   grep --color=auto zombie
+
+2(a): Source Code:
+
+/* Matthew Blanchard
+ * ECE 331
+ * sd_geo.c
+ *      Prints geometry of the SD card
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <linux/hdreg.h>
+#include <linux/fs.h>
+#include <fcntl.h>
+
+int main()
+{       
+        struct hd_geometry sd;
+        int fp;
+        
+        // Open SD card partition
+        fp = open("/dev/mmcblk0p2", O_RDONLY);
+
+        if (fp == -1) {
+                printf("Error: failed to open /dev/mmcblk0p2 ... \n");
+                return 1;
+        }
+
+        // Read SD card geometry with ioctl
+        if (ioctl(fp, HDIO_GETGEO, &sd)) {
+                printf("Error: failed to read SD card geometry ... \n");
+                return 2;
+        }
+
+        // Print results
+        printf("Heads: %u\n", sd.heads);
+        printf("Sectors: %u\n", sd.sectors);
+        printf("Cylinders: %u\n", sd.cylinders);
+        printf("Start: %lu\n", sd.start);
+
+        close(fp);
+        return 0;
+}
+
+2(b) Makefile:
+          
+TARGET=sd_geo
+CFLAGS=-g -Wall
+OBJS=sd_geo.o
+CC=gcc
+
+$(TARGET):sd_geo.c
+	$(CC) -c sd_geo.c
+	$(CC) -o $(TARGET) $(CFLAGS) $(OBJS)
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+3) This is complete.
+
+4) This is complete. 
+
+5) ps -e | grep [[:digit:]] | wc        # grep removes the header of the table 
+                                        # ps returns (because it has no digits)
+                                        # prior to counting lines.
+
+6) vmstat       # Used virtual memory is reported in thw swpd column
+
+7) find /usr/share -size +10240k        # 1 Mebibyte = 1024 KB, 10 MiB = 10240 KB 
+

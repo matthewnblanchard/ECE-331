@@ -1,0 +1,102 @@
+# Matthew Blanchard
+# ECE 331
+# HW 7
+# Due 3/23/2017
+
+1.) Makefile contents:
+
+TARGET=thebest
+CFLAGS=-g -Wall
+OBJS=trump.o spicer.o kellyanne.o pence.o
+CC=gcc
+
+all: $(TARGET)
+$(TARGET): $(OBJS)
+	$(CC) -o $(TARGET) $(OBJS)
+clean:
+	rm -f $(TARGET) $(OBJS)
+
+2.) Perl script:
+
+#!/usr/bin/perl
+
+my %out;
+my @usrs;
+my $text;
+
+open($text, '<', '/etc/passwd') or die;
+
+# Extract usernames and shells
+while (my $line = <$text>) {
+	chomp $line;
+	my @x = split(/:/, $line);
+	push (@usrs, $x[0]);
+	$out{$x[0]} = $x[6];
+}
+
+# Print data
+foreach my $key (@usrs) {
+	print "$key $out{$key}\n";
+} 
+
+3.) /^\w+:x:\d+:\d+:/
+
+4.) Source code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+
+int main(int argc, char * argv[])
+{
+	struct rusage out;
+	if (getrusage(RUSAGE_SELF, &out)) {
+		printf("Failed to get rusage data ... \n");
+		return 1;
+	}
+	printf("The resident size is %ld ... \n", out.ru_maxrss);
+	return 0;
+}
+
+5.) (a) daw
+    
+    (b) head -n 30 /usr/local/project/from/lleh | tail -n 11
+
+    (c) ln -s /usr/share/jon/snow '$throne'
+
+    (d) chmod -R go+rX ./
+
+    (e) ps aux | grep /\s+S\s+/ | wc -l 
+
+    (f) sudo apt-get update
+        apt-cache search 'Atari 2600 Emulator'
+        apt-get install stella
+
+6.) fdisk -l
+    mkdir /mnt/usb
+    sudo mount /dev/sda1 /mnt/usb
+    cp /mnt/usb/start_here ~/Documents/start_here
+    cd ~/Documents
+    ./start_here
+    tar -xf files.tar.bz2
+    cd '.  _'
+    chmod u+x next
+    ./next "matthew.n.blanchard@maine.edu" "*[0-9]"
+    
+    Message: VERMONT 
+
+7.) (a) Makefile contents:
+
+obj-m += systimer.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean    
+
+7.) (b) This has been completed

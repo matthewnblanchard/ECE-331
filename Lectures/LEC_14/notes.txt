@@ -1,0 +1,80 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 3/28/2017
+
+Type S to get stack left in latest firmware
+
+What Sheaf wants by Thurs
+
+Open func written
+Close func written
+Part of write func writen
+
+Open:
+        Ensure file is write_only (not readonly)
+Close:
+        Return 0
+Write:
+        Copy data from user space
+                allocate memory to store it in the kernel
+                copy from user space
+        printk to verify it worked
+                goes to kernel logs 
+        free memory 
+
+User Space
+|
+|
+| write(fd, "HeLo", 4);
+|                   |
+V                   |
+Kernel Space        |
+\copy.from.user()   |           What about concurrancy?
+                    /
+                   /
+                  V
+                 Buffer
+
+Will I have concurrancy issues when copying to the buffer?
+        Code running simultaneously on different cpus/cores/vcpus
+        Preemptive kernel: another program might take precedence while
+                one program is running
+        
+morse_write(...)
+{
+        char * kbuf;
+        kbuf = kmalloc(size);
+        \ error checking
+        
+        ret copy_from_user(kbuf, ubuf, cnt);
+        \ error checking
+
+        if (kbuf) {
+                kfree(kbuf);
+        }
+}
+
+global variables are bad
+
+ATOMIC -> atomic_t (32 bit #)? (barriers)
+Spinlock
+        while(busy)
+                ^
+                 \ 
+                  - atomic variable
+        atmoic_inc(busy);
+                // special ways to operate on atomic vars
+
+Semaphore/mutex <---- binary locking (either you have a lock or you don't)
+   \ 0 it locked
+    \ >0 is free
+
+Never hold a spinlock in a context where you can sleep
+Okay to sleep with mutex/semaphore
+
+DECLARE_MUTEX(name);
+int mutex_lock_interruptible(struct mutex *lock)
+        sleep until you get the lock
+
+lp (parallel port, for printer)

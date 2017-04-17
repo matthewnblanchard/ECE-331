@@ -1,0 +1,105 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 4/11/2017
+
+kmorse notes
+
+user space
+--------------
+fd = open();
+write(fd, buf, size);
+            \
+             \--- Size limited
+
+copy_from_user() return an error if an invalid pointer is passed
+--------------
+
+kernel
+--------------
+open
+write(file *filp, char *ubuf, size_t size, offset)
+--------------
+
+Be careful to undo things on error
+        call kmallo
+        get error
+        kfree
+
+Big O: 
+        O()
+        --------
+        checksum()
+        encoding()
+                pre
+                msg
+                chksum
+        \
+         \--- Bad method, fully encode data twice
+
+    _____   _________   _____
+    |   |   |       |   |   |
+____|   |___|       |___|   |__   ---> State Machine
+1   0   1   0   1   1   1   0  1
+        <--><------->
+    <--> s     2s
+      t
+
+(x) Save init time t_o
+ |
+ V
+(Y) s = t_1 - t_o
+
+compare each samplig of s to 0.5s - 1.5s (s) 1.5s - 2.5s (2s), etc
+
+500us minimum for half cycle
+
+State machine:
+One variable, switch/case
+
+Preamble lets us establish our timing
+
+Networking
+----------------------
+Ethernet -> Bob Metcalfe -> 3Com
+Ethernet, back in the day: 
+        10Mbps
+Modern "High Speed" is 20Mbps 
+        In 46 years we've only doubled our speed
+
+Coax cable, puncture into it with a "vampire", into AUI cable,
+to the controller, in the system
+------    
+    /  \
+    | . |
+    \  /
+-------
+7400 Digital Logic
+
+----------------
+__/\  /\  /\___________________
+    \/  \/  50 Ohm       |    |
+                        /|\   |      |\
+                       < V >  \______| \___Rx
+                        \|/          | /
+                         | Tx        |/
+                         V
+
+Only one system can talk at a time, otherwise you get collision
+and the data gets garbled 
+
+Need locking?
+
+Measure average voltage. When there are multiple transmitters,
+the average voltage increases (more current pulled)
+
+CSMA/CD
+Carrier-Sense-Multiple-Access\Collision-Detection
+
+Ethernet:
+1010101010101010101 11 6 bytes (MAC Address)       6 bytes (MAC Address)
+|<--- Preamble --->|^ |<-- Destination Address -->|<-- Sender Address -->| 
+                    /
+Start of Frame Delimiter (SOF)
+
+...|<-- Data -->|<-- Frame Check Sig (CRC) -->|<-- End of Frame -->|

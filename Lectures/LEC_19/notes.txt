@@ -1,0 +1,81 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 4/13/2017
+
+More Networking
+---------------
+
+OSI Model - Layers
+-----------------
+1 - Physical  - (Ethernet, Coax, Fiber, Wireless, UTP, Carrier Pigeon)
+2 - Data Link - (Ethernet, Manchester Encoding, MAC)
+3 - Network   - (IPv4 (32-bit)
+                        \
+                         \ Dotted Decimal Notation (DDN)
+                          > 192.168.1.197
+
+                Netmask - 1's Network 0's Host
+                        Network -> Host section to 0's
+                        Umaine 130.111.0.0 -> 255.255.0.0
+                        130.111.0.0 - 130.111.255.255
+                                                \
+                        IP & NM =                \ Broadcast Address
+                        Network Address          Info to this address goes
+                                                 to all hosts in the network
+                        IP | ~NM =               Broadcast MAC:
+                        Broadcast Address        FF:FF:FF:FF:FF:FF
+                Umaine has 2^16 = 65536 addresses
+                    2^16 - 2 = 65534 assignable addresses to hosts
+                        Can't assign BA or NA
+
+                Subnetting
+                        Barows: 130.111.218.0
+                        CIDR Notation: IP network/# of ones in netmask
+                        130.111.218.0/23
+                                255.255.254.0
+                        BA : 130.111.219.255
+                        Total Addresses : 2^(32-23) = 512
+                        Assignable Addresses : 2^(32-23) - 2 = 510
+
+                        Next subnet: BA + 1 = 130.111.220.0
+
+                        128.0.0.0/32
+
+                        Special Subnets:
+                        0.0.0.0/8 - Reserved
+                        127.0.0.0/8 - Localhost (NOT on network)
+
+                        No routable, reserved, reusable on LAN
+                        192.168.0.0/16
+                        10.0.0.0/8
+                        172.16.0.0/16
+4 - Transport (TCP/UDP)
+        UDP
+         -Connectionless (don't need to agree to talk)
+         -Unreliable (information could be lost)
+         -Could get info out of order
+        TCP
+         -Reliable (Guaranteed delivery)
+         -Connection Oriented (need to agree to talk)
+         -In order
+         -Has overhead
+5 - Session (The actual data)
+        Use timestamps to enforce order on UDP
+6 - Presentation
+7 - Application
+
+Ports : Identify the specific process
+        16 bits
+        Ports < 1024 were privleged, need special permission to bind to them
+        Microsoft : can go on any port
+
+        ICANN
+        Well known ports:
+        80  - HTTP
+        22  - SSH
+        443 - HTTPS 
+        25  - Mail
+        21  - FTP
+
+        Source Address : Source Port : Destination Address: Destination Port

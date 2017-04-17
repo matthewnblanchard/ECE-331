@@ -1,0 +1,76 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture 15
+# 3/30/2017
+
+Need expansion board plugged in/working for module to run properly
+        won't initialize otherwise
+
+/usr/src/linux*/documentation/locking
+
+#DEFINE_MUTEX(name)
+        mutex
+        struct mutex port_mutex;
+
+        mutex_lock_interruptible();
+
+uint32_t -> U32 in encoding.[ch]
+
+morse.c
+open
+        Check write only
+release
+        return 0
+write  
+        malloc
+        copy from user
+        if(err)
+                ret = -ENOMEM;
+                printk(...)
+                goto err
+        free
+
+        if(kbuf) kfree();
+        kbuf = NULL;
+
+        gpiod_setvalue(*to_pin, val)
+        
+busy delay (uses up processor)
+        ndelay
+        udelay
+        mdelay
+        
+releases processor
+        msleep
+        msleep_interruptible
+
+Quiz Tuesday?
+
+        add one to kbuf size for /0 
+        add /0 yourself
+
+Talking about project II:
+-------------------------
+PhP/Python
+SQL
+Lighttpd
+
+If you know Perl, you know PhP ...
+
+x.php
+        <HTML>
+        <BODY>
+        <?php
+                echo php_info();
+                for ($i=0;$i<10;$i++) {
+                        print "$i<BR>\n";
+                }
+        ?>
+        </BODY>
+        </HTML>
+
+chmod 644 x.html
+http://localhost/x.html 
+
+php has plenty of modules
+don't reinvent the wheel

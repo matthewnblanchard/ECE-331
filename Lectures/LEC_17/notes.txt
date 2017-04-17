@@ -1,0 +1,41 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture Notes
+# 4/6/2017
+
+kmorse
+Try running BPSK low for an extra time unit before turning enable high
+
+morse timing
+
+----|    :
+    |    :
+    |____:
+         :
+         :  |--~~~
+_________:__|
+
+Longest period is 36 hours
+Smallest period is ~30us
+
+NO Floating Point in the kernel EVER
+
+More python:
+---------------
+GFS
+        Wind data at various altitudes
+Run once every 12 hours (super computer)
+Every hour up to 144 hours, then every three hours
+1/4 Gig per file
+Entire Earth 
+
+Playing around with python (more)
+---------------
+r'...' for RAW STRING (interpret literally'
+
+Python programming:
+        Use modules/libraries
+        zillions of 'em
+
+import urllib2
+f = rullib2.

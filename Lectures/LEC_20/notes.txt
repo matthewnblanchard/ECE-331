@@ -1,0 +1,95 @@
+# Matthew Blanchard
+# ECE 331
+# Lecutre Notes
+# 4/18/2017
+
+encoding.h
+{
+...
+{.size=x, .code=0b....}
+
+EXAM II:
+-------------
+kernel->user->kernel
+locking
+race conditions
+dead locks
+concurrency
+ENET
+TCP/IP
+UDP
+pHp
+Python
+Security
+
+More Networking
+----------
+
+Ethernet
+| PA | Des.Addr. | Src. Addr. | Type | DATA | CRC
+                                     /      |
+                                    /       |
+IP: | Src. IP | Des. IP | ... | DATA | CRC |
+                              /      |
+                             /       |
+TCP: | Src. Port | Des. Port | ... | DATA | CRC |
+                                   /      |
+                                  /       |
+HTTP: |DATA|
+
+[A]ddress [R]esolution [P]rotocol (ARP)
+connecting computer sends out a 
+        whohas IP
+to everybody (broadcast)
+
+conectee responds 
+        I am IP
+
+Works for small networks, but how do we get MACs for devices
+eslewhere on the internet:
+
+Routing (Layer 3) (At the IP level)
+
+Computer connect into switch, into router
+
+Every computer had a routing table
+(command: route)
+if IP matches an entry, follow that rule
+if IP range entries match, follow the default rule
+        (usually heads to gateway)
+
+Wanna talk to MIT
+
+ENET:            IP:
+| DA | SA | Type | SA | DA |
+Give MAC of router and IP of website to router
+Router routes using its routing table
+
+check path: traceroute www.mit.edu
+
+-----
+
+TEST next Thursday
+
+Security
+-----
+The most secure operating system is "Windows, OSX, Linux"
+The least secure operating system is " " " " " " " " " " "
+
+The most secure machine is
+        No network
+        In a safe
+        Buried
+        Off 
+
+-Security is inversely proportional to convenience
+-Physical access 
+
+Why?
+-To protect sensitive data
+-Liability
+-Protect infrastructure
+
+Security is not a technology problem, it's a human behavior problem
+
+Secure your system. Security of a system is about how you manage it

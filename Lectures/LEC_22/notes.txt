@@ -1,0 +1,58 @@
+# Matthew Blanchard
+# ECE 331
+# Lecture
+# 4/25/2017
+
+Exam:
+Kernel Driver, Kernel Driver, Networking, Networking, Python, pHp
+
+No routing or security on this test
+
+HW Question:
+route -n is what the routing table should look like
+
+TCP wrapper / Kernel level firewall (ufw) might block #4
+
+6 Steps for Security:
+        -Filter (firewall)
+        -Stop (services, systemctl)
+        -Patch (apt-get)
+        -Backup
+        -Passwords
+        -Monitor
+
+Services:
+        AVHI - Advertises RPi on the network and tells what services
+                are available (bad)
+        sudo systemctl stop ntp.service (
+                       start
+                       disable
+                       mask     (Absolutely not stop ever)
+
+Stop vs. Disable
+        Start during doot vs. runtime
+Stop is for runtime, Disable is for boot
+
+Dig in, find what packaged are
+dpkg
+
+Processes in brackets are kernel threahds, can't get rid of them 
+
+Backup is complicated
+
+Simple:
+        copy files
+Complex:
+        AMANDA
+
+Users - /etc/passwd
+        username:x:UID:GID:Group:HomeDir:Shell
+
+        USERADD
+        USERDEL
+        USERMOD
+
+passwd file has locking
+        passwd
+
+SQLlite3 Santos.db

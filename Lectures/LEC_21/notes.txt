@@ -1,0 +1,57 @@
+# Matthew Blanchard
+# ECE 331
+# Lectures
+# 4/20/2017
+
+Security
+---------
+
+How do we get into (break into) other systems?
+        -Get physical access
+        -Open doors (default passwords, bad passwords)
+        -Buggy software (poor error checking, buffer overflows)
+                Buffer overflow: go further in the stack, change return address to your code, but your code further down)
+        -Intentional backdoors
+        
+Be secure:
+Six step process:
+        1 - Filter
+                Run a firewall
+                        OSI level 3
+                        Hardware firewall
+                        Kernel level firewall (UFW, IP tables)
+                        User level (TCP wrappers, services)
+        2 - Stop
+                Don't run services that are unnecessary
+                        TFTP    (unencrypted)
+                        Telnet  (unencrypted)
+                        RSH
+                        Finger  Gets all info but passwords 
+        3 - Patch
+                Keep up to date, do updates
+                Apply patches to test machine and test it before production machine
+                apt-update/apt-upgrade
+        4 - Backup
+                Linux rootkit (LRK) (You'll show up on FBI watchlist)
+                        Hacked up everyday code bits (ls, pwd, etc)
+                        Adds new executables etc that hide
+                If you are broken into, you cannot guarantee the integrity of the system
+                        Return to a point prior to being broken into
+                Problem with backups:
+                        Make sure they are secure
+                        Run automatically, don't do anything, when you go to look at it later
+                                you find it never was working
+                Exercise them once in a while
+                AMANDA
+                        Super awesome, indexes everything, 
+                LKRK - Linux Kernel Rootkit - insert modules
+        5 - Passwords
+                Random character passwords are bad policy
+                Forced password changes are bad policy
+                Minimum length goodis good policy
+                Using a sequence of common words is fine
+        6 - Monitor
+                Check your system
+                /var/log
+                Automatic AND Manual checking 
+        

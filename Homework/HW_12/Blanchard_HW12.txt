@@ -1,0 +1,94 @@
+# Matthew Blanchard
+# ECE 331
+# Homework 12
+# Due 4/27/2017
+
+1.) Calculate Frodo & Legolas's Network Addresses:
+
+Network Address = IP & NM
+
+Frodo:
+Network Address = 18.4.8.9 & 255.252.0.0
+        = 18.4.0.0/14
+
+Legolas:
+Network Address = 141.33.33.6 & 255.255.255.224
+        = 141.33.33.0/27
+
+Routing table for Elessar:
+----------------------------------------------------------
+ Destination | Gateway      | Genmask         | Interface
+----------------------------------------------------------
+ 0.0.0.0     | 76.99.33.10  | 0.0.0.0         | ETH1
+----------------------------------------------------------
+ 18.4.0.0    | 18.6.7.8     | 255.252.0.0     | ETH0 
+----------------------------------------------------------
+ 141.33.33.0 | 141.33.33.40 | 255.255.255.224 | ETH2
+----------------------------------------------------------
+
+Routing table for Frodo:
+----------------------------------------------------------
+ Destination | Gateway      | Genmask         | Interface
+----------------------------------------------------------
+ 0.0.0.0     | 141.33.33.40 | 0.0.0.0         | ETH0
+----------------------------------------------------------
+ 141.33.33.0 | 0.0.0.0      | 255.255.255.224 | ETH0
+----------------------------------------------------------
+
+2.) 
+Ethernet Frame from Frodo to Ellesar:
+55:00:00:00:00:00 | 00:00:00:00:00:11 | 18.4.8.9 | 141.33.33.6
+Destination MAC   | Source MAC        | Src. IP  | Dest. IP
+
+Ethernet Frame from Ellesar to Legolas:
+00:00:00:00:00:22 | 66:00:00:00:00:00 | 18.4.8.9 | 141.33.33.6
+Destination MAC   | Source MAC        | Src. IP  | Dest. IP 
+
+3.) 
+Ethernet Frame from Legloas to Ellesar:
+66:00:00:00:00:00 | 00:00:00:00:00:22 | 141.33.33.6 | 76.99.33.1
+Destination MAC   | Source MAC        | Source IP   | Destination IP
+
+Ethernet Frame from Ellesar Gandalf
+FF:00:00:00:00:00 | 77:00:00:00:00:00 | 141.33.33.6 | 76.99.33.1
+Destination MAC   | Source MAC        | Source IP   | Destination IP
+
+4.) Setup server on Christian's Pi, mounted on Matt's
+    (a) Christian Auspland 
+    (b) sudo apt-get install nfs-kernel-server nfs-common portmap
+        sudo /etc/init.d/nfs-kernel-server restart
+    (c) /home/pi/NFS
+    (d) /etc/exports --> added:
+                /home/pi/NFS 192.168.0.35(rw) 192.188.0.53(rw)
+        /etc/hosts.allow --> added:
+                portmap: 192.168.0.35 , 192.168.0.53
+                lockd: 192.168.0.35 , 192.168.0.53
+                rquotad: 192.168.0.35 , 192.168.0.53
+                mountd: 192.168.0.35 , 192.168.0.53
+                statd: 192.168.0.35 , 192.168.0.53
+        /etc/hosts.deny --> added:
+                portmap:ALL
+                lockd:ALL
+                mountd:ALL
+                rquotad:ALL
+                statd:ALL
+    (e) sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.0.35:/home/pi/NFS /mnt/NFS
+    (f) /etc/fstab --> added:
+                192.168.0.35:/home/pi/NFS /mnt/NFS nfs soft,intr,nosuid,tcp 0 0
+
+5.) Python script source:
+ 
+#!/usr/bin/python
+from matplotlib import pyplot
+import numpy
+
+x = numpy.arange(-10, 10.1, 0.1);
+y = numpy.sin(x)/x;
+
+pyplot.plot(x,y);
+pyplot.title('ECE 331 HW 12 Problem 5');
+pyplot.xlabel('Angle (radians)');
+pyplot.ylabel('Amplitude');
+
+pyplot.show();
+
